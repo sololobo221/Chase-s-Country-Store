@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delivery — Chase's Country Store</title>
+<meta name="description" content="Local delivery from Chase's Country Store, starting June 15. Roadies Chicken, sandwiches, sides, and burgers — to your door, after 2pm daily." />
+
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Delivery launches June 15</span>
+    <span>After 2pm daily · Tentative</span>
+    <span>Wells · Ogunquit · Kennebunk</span>
+    <span>Order: 508-414-2813</span>
+    <span>Roadies Chicken — to your door</span>
+    <span>Delivery launches June 15</span>
+    <span>After 2pm daily · Tentative</span>
+    <span>Wells · Ogunquit · Kennebunk</span>
+    <span>Order: 508-414-2813</span>
+    <span>Roadies Chicken — to your door</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo" aria-label="Chase's Country Store — home">
+      <img src="logo.svg" alt="Chase's Country Store" class="logo-mark" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#roadies">Roadies</a></li>
+      <li><a href="index.html#deli">Deli</a></li>
+      <li><a href="index.html#essentials">Store</a></li>
+      <li><a href="delivery.html" class="active">Delivery</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="delivery-hero">
+  <div class="wrap">
+    <p class="hero-kicker">New service · Launching June 15, 2026</p>
+    <h1>We come <em>to you.</em></h1>
+    <p class="lede">
+      Roadies Chicken, sandwiches, sides, and a few cold drinks for the trip — out the door of the store and onto your doorstep. Local-only, after 2pm, every day. Schedule is tentative while we get the routes dialed in.
+    </p>
+  </div>
+</section>
+
+<!-- SCHEDULE STRIP -->
+<section class="schedule-strip">
+  <div class="wrap">
+    <dl class="schedule-grid">
+      <div class="schedule-item">
+        <dt>Launch Date</dt>
+        <dd>June 15, 2026</dd>
+        <p class="note">First runs go out that afternoon.</p>
+      </div>
+      <div class="schedule-item">
+        <dt>Daily Window</dt>
+        <dd>After 2:00 PM</dd>
+        <p class="note">Tentative. We'll lock hours after launch week.</p>
+      </div>
+      <div class="schedule-item">
+        <dt>Days</dt>
+        <dd>Every day</dd>
+        <p class="note">Same hours as the kitchen.</p>
+      </div>
+      <div class="schedule-item">
+        <dt>Range</dt>
+        <dd>~15 mile radius</dd>
+        <p class="note">Wells and the surrounding towns.</p>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- SMART ROUTER -->
+<section class="router-section">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 2.5rem;">
+      <p class="section-label">Smart Routing</p>
+      <h2 style="font-family: var(--display); font-weight: 500; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; letter-spacing: -0.025em; font-variation-settings: 'opsz' 144;">Are you <em style="font-style: italic; font-weight: 400; color: var(--rust);">in the zone?</em></h2>
+      <p>Drop in your ZIP and we'll tell you whether you're in our delivery area, give you a rough drive-time, and hand you the number to call.</p>
+    </div>
+
+    <div class="router-grid">
+      <!-- The router -->
+      <div class="router-card">
+        <h3>Check your <em>ZIP.</em></h3>
+        <p class="sub">Five digits — we'll handle the rest.</p>
+
+        <div class="router-form">
+          <label for="zip">Your ZIP code</label>
+          <div class="input-row">
+            <input type="text" id="zip" maxlength="5" placeholder="04090" inputmode="numeric" pattern="[0-9]*" autocomplete="postal-code" />
+            <button class="btn-check" id="checkBtn" type="button">Check</button>
+          </div>
+          <p class="result-error" id="errorMsg" style="display:none;">Enter a 5-digit ZIP code</p>
+        </div>
+
+        <div class="router-result" id="result" aria-live="polite">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- Zone map / legend -->
+      <div class="zone-map-card">
+        <h4>Delivery Zones</h4>
+        <svg class="zone-map" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- outer boundary -->
+          <circle cx="200" cy="170" r="140" fill="rgba(182,90,45,0.05)" stroke="rgba(182,90,45,0.25)" stroke-width="1" stroke-dasharray="3 4"/>
+          <!-- middle ring -->
+          <circle cx="200" cy="170" r="95" fill="rgba(182,90,45,0.08)" stroke="rgba(182,90,45,0.35)" stroke-width="1" stroke-dasharray="3 4"/>
+          <!-- inner zone -->
+          <circle cx="200" cy="170" r="50" fill="rgba(74,122,90,0.18)" stroke="rgba(74,122,90,0.55)" stroke-width="1.2"/>
+
+          <!-- store pin -->
+          <circle cx="200" cy="170" r="6" fill="#1A1612"/>
+          <circle cx="200" cy="170" r="11" fill="none" stroke="#1A1612" stroke-width="1"/>
+
+          <!-- labels -->
+          <text x="200" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1612" letter-spacing="1.5">CHASE'S</text>
+
+          <!-- inner zone label -->
+          <text x="232" y="148" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A7A5A">Wells</text>
+          <text x="232" y="160" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A7A5A">Moody</text>
+
+          <!-- middle zone -->
+          <text x="200" y="78" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#B65A2D">Kennebunk</text>
+          <text x="115" y="180" text-anchor="end" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#B65A2D">Sanford</text>
+          <text x="285" y="180" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#B65A2D">Ogunquit</text>
+
+          <!-- outer zone -->
+          <text x="200" y="35" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A4239" opacity="0.7">Kennebunkport</text>
+          <text x="60" y="215" text-anchor="end" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A4239" opacity="0.7">Berwick</text>
+          <text x="340" y="215" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A4239" opacity="0.7">Eliot</text>
+          <text x="200" y="305" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4A4239" opacity="0.7">Kittery</text>
+        </svg>
+
+        <div class="zone-legend">
+          <div class="zone-legend-row">
+            <span class="dot" style="background: #4A7A5A;"></span>
+            <span class="name">Inner Zone</span>
+            <span class="desc">Fast turnaround</span>
+          </div>
+          <div class="zone-legend-row">
+            <span class="dot" style="background: #B65A2D;"></span>
+            <span class="name">Standard Zone</span>
+            <span class="desc">~30–45 min</span>
+          </div>
+          <div class="zone-legend-row">
+            <span class="dot" style="background: rgba(74,66,57,0.5);"></span>
+            <span class="name">Edge of Range</span>
+            <span class="desc">Call to confirm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="steps-section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-label">How it works</p>
+      <h2 style="font-family: var(--display); font-weight: 500; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; letter-spacing: -0.025em; font-variation-settings: 'opsz' 144;">Three steps, <em style="font-style: italic; font-weight: 400; color: var(--rust);">a hot bag.</em></h2>
+      <p>No app, no account, no menu memorized — just call. We've kept it simple on purpose.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Check the zone.</h4>
+        <p>Drop your ZIP into the checker above. Takes two seconds. If you're in, we'll show you a rough timing window.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Call to order.</h4>
+        <p>Ring the delivery line at <strong>508-414-2813</strong> with your address and what you want off the menu. They'll confirm timing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Wait for the door.</h4>
+        <p>We pack it hot, hand it to the driver, and they head out. Cash and card both work on arrival.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="wrap">
+    <div class="section-head" style="max-width: 60ch;">
+      <p class="section-label" style="color: var(--rust-soft);">Numbers to know</p>
+      <h2 style="font-family: var(--display); font-weight: 500; color: var(--cream); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; letter-spacing: -0.025em; font-variation-settings: 'opsz' 144;">Two phones, <em style="font-style: italic; font-weight: 400; color: var(--rust-soft);">one job.</em></h2>
+      <p style="color: rgba(242, 235, 221, 0.65); font-family: var(--display); font-size: 1.15rem; max-width: 50ch; line-height: 1.45;">
+        One line for the store, one for the driver. Call whichever fits the question.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="phone-card">
+        <span class="role">For Delivery Orders</span>
+        <a class="number" href="tel:+15084142813">508-414-2813</a>
+        <span class="desc">Place an order, confirm timing, ask the driver where they're at.</span>
+      </div>
+      <div class="phone-card">
+        <span class="role">For the Store</span>
+        <a class="number" href="tel:+12076461026">(207) 646-1026</a>
+        <span class="desc">Pickup, big orders, hours, gas pumps, everything else.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-mark">
+      <img src="logo.svg" alt="" class="foot-logo" aria-hidden="true" />
+      <span>Chase's <em>Country Store</em></span>
+    </div>
+    <div class="foot-fine">1054 Sanford Rd · Wells, ME · © <span id="year"></span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ============================================================
+     SMART ROUTING — ZIP-based zone checker
+     Distances measured from Chase's at 1054 Sanford Rd, Wells ME
+     ============================================================ */
+  const zones = {
+    // Inner zone: immediate Wells / Moody — fast turnaround
+    '04090': { tier: 'in',   town: 'Wells',          eta: '20–30 min', label: "You're in the zone." },
+    '04054': { tier: 'in',   town: 'Moody',          eta: '20–30 min', label: "You're in the zone." },
+
+    // Standard zone: nearby towns
+    '03907': { tier: 'in',   town: 'Ogunquit',       eta: '30–40 min', label: "You're in the zone." },
+    '04043': { tier: 'in',   town: 'Kennebunk',      eta: '30–45 min', label: "You're in the zone." },
+    '04046': { tier: 'in',   town: 'Kennebunkport',  eta: '40–50 min', label: "You're in the zone." },
+    '04073': { tier: 'in',   town: 'Sanford',        eta: '35–45 min', label: "You're in the zone." },
+    '04083': { tier: 'in',   town: 'Springvale',     eta: '40–50 min', label: "You're in the zone." },
+
+    // Edge of range — call to confirm
+    '03908': { tier: 'edge', town: 'South Berwick',  eta: '45–60 min', label: 'Edge of the zone.' },
+    '03901': { tier: 'edge', town: 'Berwick',        eta: '45–60 min', label: 'Edge of the zone.' },
+    '03903': { tier: 'edge', town: 'Eliot',          eta: '45–60 min', label: 'Edge of the zone.' },
+    '03904': { tier: 'edge', town: 'Kittery',        eta: '50–65 min', label: 'Edge of the zone.' },
+    '03905': { tier: 'edge', town: 'Kittery Point',  eta: '50–65 min', label: 'Edge of the zone.' },
+    '04002': { tier: 'edge', town: 'Alfred',         eta: '50–60 min', label: 'Edge of the zone.' },
+    '04047': { tier: 'edge', town: 'Parsonsfield',   eta: '60+ min',   label: 'Edge of the zone.' },
+    '04076': { tier: 'edge', town: 'Shapleigh',      eta: '50–65 min', label: 'Edge of the zone.' },
+  };
+
+  const DELIVERY_PHONE = '508-414-2813';
+  const DELIVERY_TEL   = '+15084142813';
+
+  function checkZip() {
+    const input    = document.getElementById('zip');
+    const errorEl  = document.getElementById('errorMsg');
+    const resultEl = document.getElementById('result');
+    const zip      = input.value.trim();
+
+    // validate
+    if (!/^\d{5}$/.test(zip)) {
+      errorEl.style.display = 'block';
+      resultEl.classList.remove('show');
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    const zone = zones[zip];
+    let html = '';
+
+    if (zone && zone.tier === 'in') {
+      html = `
+        <div class="result-status in">
+          <span class="badge">✓ In Zone</span>
+          <span class="label">${zone.label}</span>
+        </div>
+        <p class="result-detail">We deliver to <strong>${zone.town}</strong> — that's well inside our route.</p>
+        <div class="result-eta">Drive time, give or take: <strong>&nbsp;${zone.eta}</strong></div>
+        <a href="tel:${DELIVERY_TEL}" class="result-cta">
+          <span class="text">Ready when you are. Call to order:</span>
+          <span class="num">${DELIVERY_PHONE}</span>
+        </a>
+      `;
+    } else if (zone && zone.tier === 'edge') {
+      html = `
+        <div class="result-status edge">
+          <span class="badge">~ Edge of Zone</span>
+          <span class="label">${zone.label}</span>
+        </div>
+        <p class="result-detail"><strong>${zone.town}</strong> is on the outer ring — we can sometimes make it work, but call first to confirm.</p>
+        <div class="result-eta">Estimated drive: <strong>&nbsp;${zone.eta}</strong></div>
+        <a href="tel:${DELIVERY_TEL}" class="result-cta">
+          <span class="text">Worth a call to check:</span>
+          <span class="num">${DELIVERY_PHONE}</span>
+        </a>
+      `;
+    } else {
+      html = `
+        <div class="result-status out">
+          <span class="badge">✗ Out of Zone</span>
+          <span class="label">Not yet, but soon.</span>
+        </div>
+        <p class="result-detail">ZIP <strong>${zip}</strong> is outside our current delivery range. Pickup at the store is always open — and we're hoping to expand the route once things are running smooth.</p>
+        <a href="tel:+12076461026" class="result-cta">
+          <span class="text">Questions? Call the store:</span>
+          <span class="num">(207) 646-1026</span>
+        </a>
+      `;
+    }
+
+    resultEl.innerHTML = html;
+    resultEl.classList.add('show');
+  }
+
+  document.getElementById('checkBtn').addEventListener('click', checkZip);
+  document.getElementById('zip').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') checkZip();
+  });
+  // numeric only
+  document.getElementById('zip').addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
+  });
+</script>
+
+</body>
+</html>
